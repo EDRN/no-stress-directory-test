@@ -1,0 +1,11 @@
+// Replace template values here with actual
+
+package gov.nasa.jpl.cancer.directory;
+
+
+public final class Constants {
+    public static final String OLD_URI = "ldaps://edrn.jpl.nasa.gov:636/ou=users,o=MCL";
+    public static final String NEW_URI = "ldaps://edrn-ds.jpl.nasa.gov:636/ou=users,o=MCL";
+    public static final String OLD_PASSWORD = "REPLACE-ME";
+    public static final String NEW_PASSWORD = "REPLACE-ME-TOO";
+}
