@@ -70,7 +70,6 @@ When running the test case on the old service, `ldaps://edrn.jpl.nasa.gov`, in n
 
 When running the test case on the new service, `ldaps://edrn-ds.jpl.nasa.gov`, tests failed quickly, but only on mainly on JPL hosts. Outside hosts fared much better. The number under the "trial" columns indicates the attempt number when trial failed.
 
-
 | Host          | At JPL | VPN | Trial 1 | Trial 2 | Trial 3 |
 | ------------- | :----: | :-: | ------: | ------: | ------: |
 | `edrn-labcas` |   ✓    | N/A |      23 |      30 |      23 |
@@ -86,6 +85,25 @@ When running the test case on the new service, `ldaps://edrn-ds.jpl.nasa.gov`, t
 
 
 Note that `thyme` fared best with the new directory service. Is the fact it's an older, slower system a factor? Older Java? And why did `pds-ipda` only ever succeed just one time?
+
+On 2020-09-02 Andrew Zimdars upgraded `ldaps://edrn-ds.jpl.nasa.gov` to Apache DS 2.0.0.M26. The updated test results are as follows:
+
+| Host          | At JPL | VPN | Trial 1 | Trial 2 | Trial 3 |
+| ------------- | :----: | :-: | ------: | ------: | ------: |
+| `edrn-labcas` |   ✓    | N/A |       ∞ |       ∞ |       ∞ | 
+| `mcl-labcas`  |   ✓    | N/A |       ∞ |       ∞ |       ∞ |
+| `labcas-dev`  |   ✓    | N/A |       ∞ |       ∞ |       ∞ |
+| `pds-dev`     |   ✓    | N/A |       ∞ |       ∞ |       ∞ |
+| `pds-ipda`    |   ✓    | N/A |       ∞ |       ∞ |       ∞ |
+| `tumor`       |   ✓    | N/A |       ∞ |       ∞ |       ∞ |
+| `cancer`      |   ✓    | N/A |       ∞ |       ∞ |       ∞ |
+| `fatalii`     |        |  ✓  |       ∞ |       ∞ |       ∞ |
+| `fatalii`     |        |     |       ∞ |       ∞ |       ∞ |
+| `thyme`       |        |     |       ∞ |       ∞ |       ∞ |
+
+Also noteworthy: the "phoenix" watchdog didn't engage _once_ during these tests!
+
+The [changelog](https://directory.apache.org/apacheds/news.html) for Apache DS doesn't say clearly if any of the addressed issues may have caused the marked improvement we see above; perhaps [DIRSERVER-2074](https://issues.apache.org/jira/browse/DIRSERVER-2074)? Perhaps [DIRSERVER-2145](https://issues.apache.org/jira/browse/DIRSERVER-2145)?
 
 
 ## 📝 Other Notes
